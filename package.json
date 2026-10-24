@@ -1,0 +1,120 @@
+{
+  "name": "command-center",
+  "displayName": "Command Center",
+  "description": "A read-only VS Code dashboard for GitLab and Snyk repository risk triage.",
+  "version": "0.1.0",
+  "publisher": "command-center",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:commandCenter.openDashboard",
+    "onView:commandCenter.dashboard"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "commandCenter.openDashboard",
+        "title": "Open Dashboard",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.configureGitLab",
+        "title": "Configure GitLab Credentials",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.configureSnyk",
+        "title": "Configure Snyk Credentials",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.addGitLabProject",
+        "title": "Add GitLab Project",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.removeGitLabProject",
+        "title": "Remove GitLab Project",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.setSnykOrganization",
+        "title": "Set Snyk Organization ID",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.mapSnykProjects",
+        "title": "Map Snyk Projects to GitLab Repository",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.refresh",
+        "title": "Refresh Dashboard",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.clearGitLabToken",
+        "title": "Clear GitLab Token",
+        "category": "Command Center"
+      },
+      {
+        "command": "commandCenter.clearSnykToken",
+        "title": "Clear Snyk Token",
+        "category": "Command Center"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "commandCenter",
+          "title": "Command Center",
+          "icon": "resources/command-center.svg"
+        }
+      ]
+    },
+    "views": {
+      "commandCenter": [
+        {
+          "id": "commandCenter.dashboard",
+          "name": "Dashboard"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Command Center",
+      "properties": {
+        "commandCenter.gitlab.baseUrl": {
+          "type": "string",
+          "default": "https://gitlab.com",
+          "description": "GitLab instance base URL. Configure a self-managed instance here when needed."
+        },
+        "commandCenter.snyk.apiUrl": {
+          "type": "string",
+          "default": "https://api.snyk.io",
+          "description": "Snyk regional API base URL, for example https://api.eu.snyk.io or https://api.au.snyk.io."
+        },
+        "commandCenter.staleBranchThresholdDays": {
+          "type": "number",
+          "default": 90,
+          "minimum": 0,
+          "description": "Mark non-default, unprotected GitLab branches stale after this many days without a commit."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "@types/node": "^20.14.10",
+    "typescript": "^5.7.2"
+  }
+}
