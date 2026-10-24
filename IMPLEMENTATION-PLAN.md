@@ -95,7 +95,7 @@ src/
 - Confirm GitLab deployment type and API access.
 - Confirm Snyk API access, available finding data, and project-to-repository mapping.
 - Decide how users will identify the initial set of 5–20 projects.
-- **Deliverable:** Documented API assumptions and a representative data model.
+- **Deliverable:** Documented API assumptions and a representative data model in [docs/integration-requirements.md](./docs/integration-requirements.md). Customer-specific access and mapping decisions remain to be validated.
 
 ### 2. Scaffold the extension and view
 
@@ -120,7 +120,7 @@ src/
 
 - Define branch-age behavior, including how to treat protected branches and branches with recent activity.
 - Apply the documented ranking rules to repository risks.
-- **Deliverable:** Deterministic ranking with test coverage for representative cases.
+- **Deliverable:** Deterministic ranking with test coverage for representative cases, documented in [docs/risk-ranking.md](./docs/risk-ranking.md).
 
 ### 6. Build the triage experience
 
